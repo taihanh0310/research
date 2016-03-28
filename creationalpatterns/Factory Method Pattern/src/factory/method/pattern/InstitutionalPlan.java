@@ -1,17 +1,18 @@
-<?php
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package factory.method.pattern;
 
 /**
- * Description of AbstractBookFactory
  *
  * @author nthanh
  */
-abstract class AbstractBookFactory {
-    abstract function makePHPBook();
-    abstract function makeMyServeBook();
+public class InstitutionalPlan extends Plan{
+    
+    @Override
+    public void getRate(){
+        rate = 5.50;
+    }
 }

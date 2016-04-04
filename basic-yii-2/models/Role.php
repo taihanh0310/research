@@ -4,6 +4,7 @@ namespace app\models;
 
 use Yii;
 use app\models\User;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "role".
@@ -11,6 +12,7 @@ use app\models\User;
  * @property integer $id
  * @property string $role_name
  * @property integer $role_value
+ * @property User $user Description
  */
 class Role extends \yii\db\ActiveRecord
 {

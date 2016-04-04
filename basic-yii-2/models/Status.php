@@ -4,13 +4,14 @@ namespace app\models;
 
 use Yii;
 use app\models\User;
-
+use yii\helpers\ArrayHelper;
 /**
  * This is the model class for table "status".
  *
  * @property integer $id
  * @property string $status_name
  * @property integer $status_value
+ * @property User $user Description
  */
 class Status extends \yii\db\ActiveRecord
 {

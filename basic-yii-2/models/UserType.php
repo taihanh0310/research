@@ -4,6 +4,7 @@ namespace app\models;
 
 use Yii;
 use app\models\User;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "user_type".
@@ -11,6 +12,7 @@ use app\models\User;
  * @property integer $id
  * @property string $user_type_name
  * @property integer $user_type_value
+ * @property User $user Description
  */
 class UserType extends \yii\db\ActiveRecord {
 

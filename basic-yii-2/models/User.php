@@ -15,7 +15,6 @@ use yii\helpers\ArrayHelper;
 use yii\helpers\Url;
 use yii\helpers\Html;
 
-
 /**
  * User model
  *
@@ -57,8 +56,11 @@ class User extends ActiveRecord implements IdentityInterface {
     public function rules() {
         return [
             ['status_id', 'default', 'value' => self::STATUS_ACTIVE],
+            [['status_id'], 'in', 'range' => array_keys($this->getStatusList())],
             ['role_id', 'default', 'value' => 1],
+            [['role_id'], 'in', 'range' => array_keys($this->getRoleList())],
             ['user_type_id', 'default', 'value' => 1],
+            [['user_type_id'], 'in', 'range' => array_keys($this->getUserTypeList())],
             ['username', 'filter', 'filter' => 'trim'],
             ['username', 'required'],
             ['username', 'unique'],
@@ -187,12 +189,11 @@ class User extends ActiveRecord implements IdentityInterface {
     }
 
     //end Relationship usertype
-    
-    public function getProfile()
-    {
+
+    public function getProfile() {
         return $this->hasOne(Profile::className(), ['user_id' => 'id']);
     }
-    
+
     public function getProfileId() {
         return $this->profile ? $this->profile->id : 'none';
     }

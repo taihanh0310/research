@@ -9,6 +9,11 @@ package abstractfactorypatternexample;
  *
  * @author nthanh
  */
-public class BussinessLoan {
+public class BussinessLoan extends Loan{
+
+    @Override
+    void getInterestRate(double r) {
+        rate = r;
+    }
     
 }

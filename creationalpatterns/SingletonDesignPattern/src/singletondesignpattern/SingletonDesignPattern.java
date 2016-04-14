@@ -60,12 +60,52 @@ public class SingletonDesignPattern {
                     break;
                 }
                 case 2:{
+                    System.out.println("Enter the username you want to see detail: ");
+                    String userName = br.readLine();
+                    try {
+                        jdbc.view(userName);
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage());
+                    }
+                    System.out.println("Press Enter key to continue ....");
+                    System.in.read();
                     break;
                 }
                 case 3: {
+                    System.out.println("Enter the username you want delete this: ");
+                    String userName = br.readLine();
+                    try {
+                        int i = jdbc.delete(userName);
+                        if (i > 0) {
+                            System.out.println(count ++ + " Data has been updated successfully");
+                        }else{
+                            System.out.println("Data has not been inserted");
+                        }
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage());
+                    }
+                    System.out.println("Press Enter key to continue ....");
+                    System.in.read();
                     break;
                 }
                 case 4: {
+                    System.out.println("Enter the username you want to udpate data to the database: ");
+                    String userName = br.readLine();
+                    System.out.println("Enter the password you want to udpate to the database");
+                    String passWord = br.readLine();
+                    try {
+                        int i = jdbc.update(userName, passWord);
+                        if(i > 0){
+                            System.out.println(count ++ + " Data has been updated successfully");
+                        }
+                        else{
+                            System.out.println("Data has not been inserted");
+                        }
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage());
+                    }
+                    System.out.println("Press Enter key to continue ....");
+                    System.in.read();
                     break;
                 }
             }

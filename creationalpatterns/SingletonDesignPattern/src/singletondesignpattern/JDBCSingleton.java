@@ -104,11 +104,11 @@ public class JDBCSingleton {
             //get connection
             con = this.getConnection();
             //prepareStatement
-            ps = con.prepareStatement("Update temp_table set password =? where username=" + username);
+            ps = con.prepareStatement("Update temp_table set password =? where username= '"+username+"' ");
             //set value
             ps.setString(1, password);
+            
             //update
-
             recordCounter = ps.executeUpdate();
 
         } catch (Exception e) {
@@ -134,11 +134,7 @@ public class JDBCSingleton {
             //get connection
             con = this.getConnection();
             //prepareStatement
-            ps = con.prepareStatement("DELETE FROM temp_table\n"
-                    + "WHERE username = ?");
-            //set value
-            ps.setString(0, username);
-
+            ps = con.prepareStatement("delele from temp_table where username ='"+ username +"' ");
             //update
             recordCounter = ps.executeUpdate();
         } catch (Exception e) {

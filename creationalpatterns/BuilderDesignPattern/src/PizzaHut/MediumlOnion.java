@@ -15,19 +15,19 @@ public class MediumlOnion extends VegPizza
     @Override
     public String name()
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return "Medium Onion";
     }
 
     @Override
     public Float price()
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return 30f;
     }
 
     @Override
     public String size()
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return "Medium";
     }
     
 }

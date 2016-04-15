@@ -15,19 +15,19 @@ public class MediumMasala extends VegPizza
     @Override
     public String name()
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return "Medium Masala Pizza";
     }
 
     @Override
     public Float price()
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return 44f;
     }
 
     @Override
     public String size()
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return "Medium";
     }
     
 }

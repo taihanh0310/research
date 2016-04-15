@@ -9,7 +9,25 @@ package PizzaHut;
  *
  * @author nthanh
  */
-public class LargeNonVegPizza
+public class LargeNonVegPizza extends NonVegPizza
 {
+
+    @Override
+    public String name()
+    {
+        return "Large Non Veg Pizza";
+    }
+
+    @Override
+    public Float price()
+    {
+        return 60f;
+    }
+
+    @Override
+    public String size()
+    {
+        return "Large";
+    }
     
 }

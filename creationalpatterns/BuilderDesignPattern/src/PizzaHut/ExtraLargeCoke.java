@@ -9,25 +9,25 @@ package PizzaHut;
  *
  * @author nthanh
  */
-public class MediumNonVegPizza extends NonVegPizza
+public class ExtraLargeCoke extends Coke
 {
-
-    @Override
-    public String name()
-    {
-        return "Medium non veg pizzza";
-    }
 
     @Override
     public Float price()
     {
-        return 33f;
+        return 66f;
+    }
+
+    @Override
+    public String name()
+    {
+        return "1000 ml";
     }
 
     @Override
     public String size()
     {
-        return "Medium";
+        return "Extra large";
     }
     
 }

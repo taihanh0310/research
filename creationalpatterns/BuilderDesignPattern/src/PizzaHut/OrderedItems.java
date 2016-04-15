@@ -40,5 +40,7 @@ public class OrderedItems
             System.out.println("Size is:" + item.size());
             System.out.println("Price is: " + item.price());
         }
+        
+        System.out.println("Total Price: " + this.getCost());
     }
 }

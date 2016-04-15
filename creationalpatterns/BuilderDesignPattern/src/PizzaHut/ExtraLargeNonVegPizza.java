@@ -21,13 +21,13 @@ public class ExtraLargeNonVegPizza extends NonVegPizza
     @Override
     public Float price()
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return 45f;
     }
 
     @Override
     public String size()
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return "Extra large";
     }
     
 }

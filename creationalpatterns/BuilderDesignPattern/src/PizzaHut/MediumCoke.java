@@ -15,19 +15,19 @@ public class MediumCoke extends Coke
     @Override
     public Float price()
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return 33f;
     }
 
     @Override
     public String name()
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return "330 ml coke";
     }
 
     @Override
     public String size()
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return "Medium Coke";
     }
     
 }

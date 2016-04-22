@@ -10,16 +10,17 @@ namespace app\models\Form;
 
 use yii\base\Model;
 use app\models\User;
-use app\models\PermissionHelpers;
+use app\models\Common\PermissionHelpers;
 
 /**
  * Description of LoginForm
  *
  * @author nthanh
  */
-class LoginForm extends Model {
+class LoginForm extends Model
+{
 
-    public $usename;
+    public $username;
     public $password;
     public $rememberMe = true;
     private $_user = false;
@@ -27,44 +28,58 @@ class LoginForm extends Model {
     /**
      * Rules of method
      */
-    public function rules() {
+    public function rules()
+    {
         return [
-            [['username', 'password'], 'required'],
+            [ ['username', 'password'], 'required'],
             ['rememberMe', 'boolean'],
             //validatePassword at user model
             ['password', 'validatePassword'],
         ];
     }
 
-    public function login() {
-        if ($this->validate()) {
+    public function login()
+    {
+        if($this->validate())
+        {
             return Yii::$app->user->login($this->getUser(), $this->rememberMe ? 3600 * 24 * 30 : 0);
-        } else {
+        }
+        else
+        {
             return false;
         }
     }
 
-    public function getUser() {
-        if ($this->_user === false) {
+    public function getUser()
+    {
+        if($this->_user === false)
+        {
             $this->_user = User::findByUsername($this->username);
         }
         return $this->_user;
     }
 
-    public function loginAdmin() {
-        if (($this->validate()) && PermissionHelpers::requireMinimumRole('Admin', $this->getUser()->id)) {
+    public function loginAdmin()
+    {
+        if(($this->validate()) && PermissionHelpers::requireMinimumRole('Admin', $this->getUser()->id))
+        {
 
             return Yii::$app->user->login($this->getUser(), $this->rememberMe ? 3600 * 24 * 30 : 0);
-        } else {
+        }
+        else
+        {
 
             throw new NotFoundHttpException('You Shall Not Pass.');
         }
     }
 
-    public function validatePassword($attribute, $params) {
-        if (!$this->hasErrors()) {
+    public function validatePassword($attribute, $params)
+    {
+        if(!$this->hasErrors())
+        {
             $user = $this->getUser();
-            if (!$user || !$user->validatePassword($this->password)) {
+            if(!$user || !$user->validatePassword($this->password))
+            {
                 $this->addError($attribute, 'Incorrect username or password.');
             }
         }

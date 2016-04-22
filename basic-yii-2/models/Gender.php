@@ -12,6 +12,7 @@ use Yii;
  */
 class Gender extends \yii\db\ActiveRecord
 {
+
     /**
      * @inheritdoc
      */
@@ -38,7 +39,8 @@ class Gender extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'gender_name' => 'Gender Name',
+            'gender_name' => 'Gender',
         ];
     }
+
 }

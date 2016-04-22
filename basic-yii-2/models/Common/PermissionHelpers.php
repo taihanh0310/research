@@ -6,9 +6,9 @@
  * and open the template in the editor.
  */
 
-namespace app\models;
+namespace app\models\Common;
 
-use app\models\ValueHelpers;
+use app\models\Common\ValueHelpers;
 use yii;
 use yii\web\Controller;
 

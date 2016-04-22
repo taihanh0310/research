@@ -16,7 +16,8 @@ use yii\base\Model;
  *
  * @author nthanh
  */
-class ContactForm extends Model {
+class ContactForm extends Model
+{
 
     public $name;
     public $email;
@@ -24,7 +25,8 @@ class ContactForm extends Model {
     public $body;
     public $verifyCode;
 
-    public function rules() {
+    public function rules()
+    {
         return [
             // name, email, subject and body are required
             [['name', 'email', 'subject', 'body'], 'required'],
@@ -35,13 +37,28 @@ class ContactForm extends Model {
         ];
     }
 
-    public function attributeLabels() {
+    public function actions()
+    {
+        return [
+            'error' => [
+                'class' => 'yii\web\ErrorAction',
+            ],
+            'captcha' => [
+                'class' => 'yii\captcha\CaptchaAction',
+                'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
+            ],
+        ];
+    }
+
+    public function attributeLabels()
+    {
         return [
             'verifyCode' => 'Verification Code',
         ];
     }
 
-    public function sendEmail($email) {
+    public function sendEmail($email)
+    {
         return Yii::$app->mailer->compose()
                         ->setTo($email)
                         ->setFrom([$this->email => $this->name])

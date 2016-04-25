@@ -45,7 +45,7 @@ class Profile extends ActiveRecord
     public function rules()
     {
         return [
-            [['user_id', 'gender_id', 'deleted_at'], 'required'],
+            [['user_id', 'gender_id'], 'required'],
             [['user_id', 'gender_id'], 'integer'],
             [['first_name', 'last_name', 'address'], 'string'],
             [['birthdate', 'created_at', 'updated_at', 'deleted_at'], 'safe'],
@@ -65,6 +65,32 @@ class Profile extends ActiveRecord
             $this->birthdate = $new_date_format;
         }
         parent::beforeValidate();
+    }
+
+    public function beforeSave($insert)
+    {
+        if(parent::beforeSave($insert))
+        {
+            $this->created_at = $this->updated_at = date('Y-m-d H:i:s');
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public function beforeDelete()
+    {
+        if(parent::beforeSave($insert))
+        {
+            $this->updated_at = $this->deleted_at = date('Y-m-d H:i:s');
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     /**

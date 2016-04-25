@@ -19,6 +19,7 @@ AppAsset::register($this);
         <?= Html::csrfMetaTags() ?>
         <title><?= Html::encode($this->title) ?></title>
         <?php $this->head() ?>
+        <script src="//maps.googleapis.com/maps/api/js?v=3.exp&sensor=true"></script>
     </head>
     <body>
         <?php $this->beginBody() ?>
@@ -45,7 +46,6 @@ AppAsset::register($this);
             }
             else
             {
-                $menuItems[] = ['label' => 'Profile', 'url' => ['/profile/view']];
                 $menuItems[] = [
                     'label' => 'Logout (' . Yii::$app->user->identity->username . ')',
                     'url' => ['/site/logout'],

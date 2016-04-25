@@ -17,18 +17,12 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'last_name')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'birthdate')->textInput() ?>
-
-    <?= $form->field($model, 'gender_id')->dropDownList($model->genderList, ['prompt' => 'Please Choose One']);
+    <?php
+    //echo $form->field($model, 'birthdate')->widget(DatePicker::className(), ['clientOptions' => ['dateFormat' => 'yy-mm-dd']]);
     ?>
 
-    <?= $form->field($model, 'created_at')->textInput() ?>
-
-    <?= $form->field($model, 'updated_at')->textInput() ?>
-
-    <?= $form->field($model, 'deleted_at')->textInput() ?>
-
-    <?= $form->field($model, 'avatar')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'gender_id')->dropDownList($model->getGenderList(), ['prompt' => 'Please Choose One']);
+    ?>
 
     <?= $form->field($model, 'address')->textarea(['rows' => 6]) ?>
 

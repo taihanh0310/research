@@ -108,6 +108,19 @@ class User extends ActiveRecord implements IdentityInterface
         ];
     }
 
+    public function beforeSave($insert)
+    {
+        if(parent::beforeSave($insert))
+        {
+            $this->created_at = $this->updated_at = date('Y-m-d H:i:s');
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     /*
      * Get role relationship
      *

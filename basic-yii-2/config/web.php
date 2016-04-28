@@ -21,9 +21,9 @@ $config = [
             'useFileTransport' => false,
             'transport' => [
                 'class' => 'Swift_SmtpTransport',
-                'host' => 'localhost',
-                'username' => 'username',
-                'password' => 'password',
+                'host' => 'smtp-mail.outlook.com',
+                'username' => 'nthanh.fit@hotmail.com',
+                'password' => 'Emm@W@ts0n',
                 'port' => '587',
                 'encryption' => 'tls',
             ],

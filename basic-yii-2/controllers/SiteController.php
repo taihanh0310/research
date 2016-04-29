@@ -9,15 +9,16 @@ use app\models\Form\PasswordResetRequestForm;
 use app\models\Form\ResetPasswordForm;
 use yii\base\InvalidParamException;
 use yii\web\BadRequestHttpException;
-use yii\base\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use app\models\Form\ContactForm;
 use app\models\ValueHelpers;
+use yii\base\Controller;
+use kartik\social\Module;
 
 class SiteController extends Controller
 {
-
+   
     public function behaviors()
     {
         return [
@@ -67,7 +68,7 @@ class SiteController extends Controller
             ],
         ];
     }
-
+    
     public function actionIndex()
     {
         return $this->render('index');

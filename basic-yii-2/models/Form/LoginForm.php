@@ -11,6 +11,7 @@ namespace app\models\Form;
 use yii\base\Model;
 use app\models\User;
 use app\models\Common\PermissionHelpers;
+use Yii;
 
 /**
  * Description of LoginForm

@@ -81,7 +81,8 @@ class SiteController extends Controller
     public function actionLogout()
     {
         Yii::$app->user->logout();
-        return $this->goHome();
+        //return $this->goHome();
+        return $this->redirect(Yii::$app->urlManager->createUrl("site/index"));
     }
 
     /**
@@ -103,13 +104,15 @@ class SiteController extends Controller
         //Check user not is guest, redirect to Home page
         if(!Yii::$app->user->isGuest)
         {
-            return $this->goHome();
+            //return $this->goHome();
+            return $this->redirect(Yii::$app->urlManager->createUrl("site/index"));
         }
         //login form
         $model = new LoginForm();
         if($model->load(Yii::$app->request->post()) && $model->login())
         {
-            return $this->goBack();
+            //return $this->goBack();
+            return $this->redirect(Yii::$app->urlManager->createUrl("site/index"));
         }
         else
         {
@@ -132,7 +135,8 @@ class SiteController extends Controller
             {
                 if(Yii::$app->getUser()->login($user))
                 {
-                    return $this->goHome();
+                    //return $this->goHome();
+                    return $this->redirect(Yii::$app->urlManager->createUrl("site/index"));
                 }
             }
         }
@@ -154,7 +158,8 @@ class SiteController extends Controller
             {
                 Yii::$app->session->setFlash('error', 'There was an error sending email.');
             }
-            return $this->refresh();
+            //return $this->refresh();
+            return $this->redirect(Yii::$app->urlManager->createUrl("site/index"));
         }
         else
         {
@@ -177,7 +182,8 @@ class SiteController extends Controller
         if($model->load(Yii::$app->request->post()) && $model->validate() && $model->resetPassword())
         {
             Yii::$app->getSession()->setFlash('success', 'New password was saved.');
-            return $this->goHome();
+            //return $this->goHome();
+            return $this->redirect(Yii::$app->urlManager->createUrl("site/index"));
         }
         return $this->render('resetPassword', [
                     'model' => $model,

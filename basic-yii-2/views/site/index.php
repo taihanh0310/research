@@ -25,7 +25,6 @@ $this->title = 'Yii 2 Build';
         <h1>Yii 2 Build <i class="fa fa-plug"></i></h1>
 
         <p class="lead">Use this Yii 2 Template to start Projects.</p>
-
         
         <br/>
 

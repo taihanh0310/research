@@ -16,7 +16,10 @@ $this->title = 'Yii 2 Build';
     <div class="jumbotron">
     
    <?php if (Yii::$app->user->isGuest) {
-        echo Html::a('Get Started Today', ['site/signup'], ['class' => 'btn btn-lg btn-success']);
+        echo yii\authclient\widgets\AuthChoice:: widget([
+'baseAuthUrl' => [ 'site/auth' ],
+'popupMode' => false,
+]);
         } 
     ?>
         </p>

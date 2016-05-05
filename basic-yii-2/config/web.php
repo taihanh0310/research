@@ -81,43 +81,46 @@ $config = [
                 'screenName' => 'TWITTER_SCREEN_NAME'
             ],
         ],
+        'gii' => [
+            'class' => 'yii\gii\Module', //adding gii module
+            'allowedIPs' => ['127.0.0.1', '::1']  //allowing ip's 
+        ],
     // your other modules
     ],
-    
-    //auth client collection
-    'authClientCollection' => [
-        'class' => 'yii\authclient\Collection',
-        'clients' => [
-            'facebook' => [
-                'class' => 'yii\authclient\clients\Facebook' ,
-                'clientId' => '547299838811682' ,
-                'clientSecret' => 'cdf04533bf5e4f917ab618c544e032d9' ,
-                ],
-            'github' => [
-                'class' => 'yii\authclient\clients\GitHub' ,
-                'clientId' => 'your client id' ,
-                'clientSecret' => 'your client secret' ,
-                ],
-            'twitter' => [
-                'class' => 'yii\authclient\clients\Twitter' ,
-                'consumerKey' => 'your consumer key' ,
-                'consumerSecret' => 'your consumer secret' ,
-                ],
-            'google' => [
-                'class' => 'yii\authclient\clients\GoogleOAuth' ,
-                'clientId' => 'your client id' ,
-                'clientSecret' => 'your client secret' ,
-                ],
-            'linkedin' => [
-                'class' => 'yii\authclient\clients\LinkedIn' ,
-                'clientId' => 'your client id' ,
-                'clientSecret' => 'your client secret' ,
-                ],
-        ],
-    ],
+        //auth client collection
+//    'authClientCollection' => [
+//        'class' => 'yii\authclient\Collection',
+//        'clients' => [
+//            'facebook' => [
+//                'class' => 'yii\authclient\clients\Facebook' ,
+//                'clientId' => '547299838811682' ,
+//                'clientSecret' => 'cdf04533bf5e4f917ab618c544e032d9' ,
+//                ],
+//            'github' => [
+//                'class' => 'yii\authclient\clients\GitHub' ,
+//                'clientId' => 'your client id' ,
+//                'clientSecret' => 'your client secret' ,
+//                ],
+//            'twitter' => [
+//                'class' => 'yii\authclient\clients\Twitter' ,
+//                'consumerKey' => 'your consumer key' ,
+//                'consumerSecret' => 'your consumer secret' ,
+//                ],
+//            'google' => [
+//                'class' => 'yii\authclient\clients\GoogleOAuth' ,
+//                'clientId' => 'your client id' ,
+//                'clientSecret' => 'your client secret' ,
+//                ],
+//            'linkedin' => [
+//                'class' => 'yii\authclient\clients\LinkedIn' ,
+//                'clientId' => 'your client id' ,
+//                'clientSecret' => 'your client secret' ,
+//                ],
+//        ],
+//    ],
 ];
 
-if(YII_ENV_DEV)
+if (YII_ENV_DEV)
 {
     // configuration adjustments for 'dev' environment
     $config['bootstrap'][] = 'debug';
@@ -128,6 +131,7 @@ if(YII_ENV_DEV)
     $config['bootstrap'][] = 'gii';
     $config['modules']['gii'] = [
         'class' => 'yii\gii\Module',
+        'allowedIPs' => ['*'],
     ];
 }
 

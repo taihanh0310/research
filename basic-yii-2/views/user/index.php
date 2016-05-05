@@ -5,20 +5,19 @@ use yii\grid\GridView;
 use yii\bootstrap\Collapse;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\Search\ProfileSearch */
+/* @var $searchModel app\models\Search\UserSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Profiles';
+$this->title = 'Users';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="profile-index">
+<div class="user-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-
-
     <?php
     echo Collapse::widget([
+
 
         'items' => [
             // equivalent to the above
@@ -30,8 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ]
     ]);
-    ?> 
-
+    ?>
 
 
     <?=
@@ -41,16 +39,14 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
             //'id',
-            ['attribute' => 'profileIdLink', 'format' => 'raw'],
+            ['attribute' => 'userIdLink', 'format' => 'raw'],
             ['attribute' => 'userLink', 'format' => 'raw'],
-            'first_name',
-            'last_name',
-            'birthdate',
-            'genderName',
+            ['attribute' => 'profileLink', 'format' => 'raw'],
+            'email:email',
+            'roleName',
+            'userTypeName',
+            'statusName',
             ['class' => 'yii\grid\ActionColumn'],
-        // 'created_at',
-        // 'updated_at',
-        // 'user_id',
         ],
     ]);
     ?>

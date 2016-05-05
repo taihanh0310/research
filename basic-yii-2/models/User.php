@@ -13,6 +13,7 @@ use yii\web\IdentityInterface;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Url;
 use yii\helpers\Html;
+use app\models\Auth;
 
 /**
  * User model

@@ -15,10 +15,11 @@ use app\models\Form\ContactForm;
 use app\models\ValueHelpers;
 use yii\base\Controller;
 use kartik\social\Module;
+use app\models\Common\PermissionHelpers;
 
 class SiteController extends Controller
 {
-   
+
     public function behaviors()
     {
         return [
@@ -66,9 +67,13 @@ class SiteController extends Controller
                 'class' => 'yii\captcha\CaptchaAction',
                 'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
             ],
+            'auth' => [
+                'class' => 'yii\authclient\AuthAction',
+                'successCallback' => [$this, 'onAuthSuccess'],
+            ],
         ];
     }
-    
+
     public function actionIndex()
     {
         return $this->render('index');
@@ -102,19 +107,18 @@ class SiteController extends Controller
     public function actionLogin()
     {
         //Check user not is guest, redirect to Home page
-        if(!Yii::$app->user->isGuest)
+        if (!Yii::$app->user->isGuest)
         {
             //return $this->goHome();
             return $this->redirect(Yii::$app->urlManager->createUrl("site/index"));
         }
         //login form
         $model = new LoginForm();
-        if($model->load(Yii::$app->request->post()) && $model->login())
+        if ($model->load(Yii::$app->request->post()) && $model->login())
         {
             //return $this->goBack();
             return $this->redirect(Yii::$app->urlManager->createUrl("site/index"));
-        }
-        else
+        } else
         {
             return $this->render('login', [
                         'model' => $model
@@ -129,11 +133,11 @@ class SiteController extends Controller
     public function actionSignup()
     {
         $model = new SignupForm();
-        if($model->load(Yii::$app->request->post()))
+        if ($model->load(Yii::$app->request->post()))
         {
-            if($user = $model->signup())
+            if ($user = $model->signup())
             {
-                if(Yii::$app->getUser()->login($user))
+                if (Yii::$app->getUser()->login($user))
                 {
                     //return $this->goHome();
                     return $this->redirect(Yii::$app->urlManager->createUrl("site/index"));
@@ -148,20 +152,18 @@ class SiteController extends Controller
     public function actionContact()
     {
         $model = new ContactForm();
-        if($model->load(Yii::$app->request->post()) && $model->validate())
+        if ($model->load(Yii::$app->request->post()) && $model->validate())
         {
-            if($model->sendEmail(Yii::$app->params['adminEmail']))
+            if ($model->sendEmail(Yii::$app->params['adminEmail']))
             {
                 Yii::$app->session->setFlash('success', 'Thanh you for contacting us. We will respond to you as soon as possible. ');
-            }
-            else
+            } else
             {
                 Yii::$app->session->setFlash('error', 'There was an error sending email.');
             }
             //return $this->refresh();
             return $this->redirect(Yii::$app->urlManager->createUrl("site/index"));
-        }
-        else
+        } else
         {
             return $this->render('contact', [
                         'model' => $model,
@@ -174,12 +176,11 @@ class SiteController extends Controller
         try
         {
             $model = new ResetPasswordForm($token);
-        }
-        catch(InvalidParamException $e)
+        } catch (InvalidParamException $e)
         {
             throw new BadRequestHttpException($e->getMessage());
         }
-        if($model->load(Yii::$app->request->post()) && $model->validate() && $model->resetPassword())
+        if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->resetPassword())
         {
             Yii::$app->getSession()->setFlash('success', 'New password was saved.');
             //return $this->goHome();

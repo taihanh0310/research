@@ -16,3 +16,10 @@ INSERT INTO `country` VALUES ('RU','Russia',146519759);
 INSERT INTO `country` VALUES ('US','United States',322976000);
 
 http://www.yiiframework.com/doc-2.0/guide-start-databases.html
+
+//Yeu cau login khi o action nao thi cach su dung nhu sau
+use common\models\PermissionHelpers;
+
+'matchCallback' => function ($rule, $action) {
+return PermissionHelpers::requireMinimumRole('Admin')
+&& PermissionHelpers::requireStatus('Active');

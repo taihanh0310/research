@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use app\models\Profile;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Search\ProfileSearch */
@@ -10,14 +11,14 @@ use yii\widgets\ActiveForm;
 
 <div class="profile-search">
 
-    <?php $form = ActiveForm::begin([
-        'action' => ['index'],
-        'method' => 'get',
-    ]); ?>
+    <?php
+    $form = ActiveForm::begin([
+                'action' => ['index'],
+                'method' => 'get',
+    ]);
+    ?>
 
-    <?= $form->field($model, 'id') ?>
 
-    <?= $form->field($model, 'user_id') ?>
 
     <?= $form->field($model, 'first_name') ?>
 
@@ -25,23 +26,20 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'birthdate') ?>
 
-    <?php // echo $form->field($model, 'gender_id') ?>
+    <?= $form->field($model, 'gender_id')->dropDownList(Profile::getgenderList(), [ 'prompt' => 'Please Choose One']);
+    ?>
 
     <?php // echo $form->field($model, 'created_at') ?>
 
     <?php // echo $form->field($model, 'updated_at') ?>
 
-    <?php // echo $form->field($model, 'deleted_at') ?>
-
-    <?php // echo $form->field($model, 'avatar') ?>
-
-    <?php // echo $form->field($model, 'address') ?>
+        <?php // echo $form->field($model, 'user_id')  ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton('Reset', ['class' => 'btn btn-default']) ?>
+<?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
+    <?= Html::resetButton('Reset', ['class' => 'btn btn-default']) ?>
     </div>
 
-    <?php ActiveForm::end(); ?>
+<?php ActiveForm::end(); ?>
 
 </div>
